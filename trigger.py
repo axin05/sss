@@ -50,9 +50,9 @@ def checkIn():
 
 
 def isCheckIn():
-    url = "http://mobile-consumer-sapp.chery.cn/web/task/record/sign-in/daily"
+    url = "http://mobile-consumer-sapp.chery.cn/web/task/record/sign-in/lottery"
     params = {
-        "taskCode": "SignUp01",
+        "taskCode": "SignUpLottery03",
         "access_token": token
     }
 
