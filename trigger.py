@@ -219,7 +219,7 @@ def post():
         share()
         print("第{}次分享".format(i + 1))
         time.sleep(5)
-        wxPush("完成第一次任务", "目前积分：{}".format(userInfo()))
+        wxPush("完成第{}次任务".format(i+1), "目前积分：{}".format(userInfo()))
 
 
 def share():
