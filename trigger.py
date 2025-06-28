@@ -7,7 +7,7 @@ from datetime import datetime
 import requests
 
 err = "签到失败！"
-token = "QVL8OserRp1enCufAgIAeAAAAAAAAAAU"
+token = "El4T2PynTzpenCufAgIAeAAAAAAAAAAU"
 
 
 def userInfo():
@@ -179,11 +179,11 @@ def postPagerWithVideo(video, cover):
         }
 
         response = requests.post(url, params=params, headers=headers, json=data)
+        print(response.text)
         code = response.json()['status']
         msg = response.json()['message']
         if code == 200:
-            time.sleep(5)
-            wxPush("完成发视频帖", "目前积分：{}".format(userInfo()))
+
             return msg
         else:
             wxPush("发视频帖失败", "{}，原因：{}".format("发视频帖失败", msg))
@@ -209,6 +209,7 @@ def post():
         print("第{}次发视频帖".format(i + 1))
         video = uploadVideo(getOss())
         cover = uploadPic(file_p1)
+        time.sleep(2)
         postPagerWithVideo(video, cover)
         time.sleep(5)
         print("第{}次发优质帖".format(i + 1))
@@ -218,6 +219,7 @@ def post():
         share()
         print("第{}次分享".format(i + 1))
         time.sleep(5)
+        wxPush("完成第一次任务", "目前积分：{}".format(userInfo()))
 
 
 def share():
@@ -248,8 +250,6 @@ def share():
         code = response.json()['status']
         msg = response.json()['message']
         if code == 200:
-            time.sleep(5)
-            wxPush("完成分享", "目前积分：{}".format(userInfo()))
             return msg
         else:
             wxPush("分享失败", "{}，原因：{}".format("分享失败", msg))
@@ -291,11 +291,10 @@ def postPagerWithPic(imgUrls):
             headers=headers,
             json=data
         )
+        print(response.text)
         code = response.json()['status']
         msg = response.json()['message']
         if code == 200:
-            time.sleep(5)
-            wxPush("完成发优质帖", "目前积分：{}".format(userInfo()))
             return msg
         else:
             wxPush("发优质帖失败", "{}，原因：{}".format("发优质帖失败", msg))
@@ -330,7 +329,7 @@ def uploadPic(file_path):
                 files = {'file': (img_path, f, 'image/jpeg')}
                 print(strs)
                 response = requests.post(url, params=params, headers=headers, files=files)
-
+                print(response.text)
             urls.append(response.json()['data']['url'])
             strs += ".."
         except Exception as e:
@@ -382,6 +381,7 @@ def uploadVideo(oss_config):
 
         # 发送POST请求
         response = requests.post(upload_url, data=data, files=files)
+        print(response.text)
         code = response.status_code
         file_url = f"https://{oss_config['bucket']}.{oss_config['endpoint']}/{oss_config['folder']}/{file_name}"
         if code == 200:
