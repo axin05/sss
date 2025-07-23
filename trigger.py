@@ -7,7 +7,7 @@ from datetime import datetime
 import requests
 
 err = "签到失败！"
-token = "El4T2PynTzpenCufAgIAeAAAAAAAAAAU"
+token = "yslvFYYISfZenCufAgIAeAAAAAAAAAAU"
 
 content = [{
     "content": "在竞争激烈的A+级市场，奇瑞艾瑞泽8凭借越级产品力成功突围。鲲鹏动力1.6T发动机爆发出197匹马力，匹配7速湿式双离合，动力响应迅猛；2790mm超长轴距带来行政级后排空间，全车80%软包材质+索尼音响提升豪华质感。智能方面，24.6吋双联屏支持AI语音交互，L2.5级驾驶辅助含自动泊车、全速域ACC，新手也能轻松驾驭。更难得的是，28项NVH静音技术让高速巡航低声噪媲美B级车，而运动底盘调校则兼顾舒适与操控乐趣。从颜值到内核，艾瑞泽8完美诠释了「鱼和熊掌兼得」\n\n——10万级预算，30万级体验！",
